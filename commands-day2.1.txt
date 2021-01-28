@@ -1,0 +1,137 @@
+index=_internal sourcetype=splunkd_ui_access | stats count as event_count,avg(bytes) as average,sum(status) as summation,min(status) as mini,max(status) as maxx,dc(status) as distinct,values(status) as val by method
+
+
+timechart span=1h count
+
+Span ---- s - second 
+          m - minute 
+		  h - hour 
+		  d - day
+		  w - week 
+		  mon - month
+		  y - year 
+		  
+		  
+		  
+		  
+| fillnull value="NA"
+
+index=_internal sourcetype=splunkd_ui_access | timechart count by file useother=f usenull=f
+
+index=_internal sourcetype=splunkd_ui_access | timechart count by file limit=20 
+
+
+ | chart <func> over <field> by <field>
+ 
+ 
+ index=_internal sourcetype=splunkd_ui_access | chart count over status by method
+ 
+ 
+ index=_internal sourcetype=splunkd_ui_access 
+| table method,status,bytes 
+| dedup method 
+| rename method as Product , status as ServiceCost , bytes as TransportCost | addcoltotals labelfield=Product label="Total Cost"
+
+
+
+index=_internal sourcetype=splunkd_ui_access 
+| table method,status,bytes,date_minute
+| dedup method 
+| rename method as Product , status as ServiceCost , bytes as TransportCost | addtotals ServiceCost,TransportCost fieldname="Total Cost/Product"
+
+
+
+
+
+Total Cost            ServiceCost  TransportCost
+
+Cost                    2345           56789   
+
+o/p ---
+index=_internal sourcetype=splunkd_ui_access 
+| table method,status,bytes,date_minute
+| dedup method 
+| rename method as Product , status as ServiceCost , bytes as TransportCost | addcoltotals ServiceCost,TransportCost labelfield="Total Cost" label="Cost" | tail 1 | table "Total Cost",ServiceCost,TransportCost
+
+
+
+
+ Query1 | appendcols [ | search Query2 ]
+ 
+ 
+ Query1 | append [ | search Query2 ]
+ 
+ 
+ 
+ 
+ 
+ ----------------------------
+ 
+ EVAL ----
+ 
+ 
+ | eval <new_field_name/existing_field_name>= logic 
+ 
+ 
+ | eval <new_field_name/existing_field_name> = round(field_name,n)     ------------ n will be any positive integer  
+ 
+ 
+ | makeresults 
+| fields - _time 
+| eval AA="Ayan/Maity,Naveen/Kumar" , AA=split(AA,",") 
+| mvexpand AA 
+| eval Fname=mvindex(split(AA,"/"),0),Lname=mvindex(split(AA,"/"),1) | fields - AA | eval FullName=Fname." ".Lname | eval up=upper(Fname) , low=lower(Lname)
+ 
+
+
+--------------------
+
+
+IF / CASE -----
+
+
+IF ----
+ | eval <new_field_name>=if(con,val,else)
+ 
+ 
+ | eval method_status=if(method="GET","Good","Bad")
+ 
+ 
+ | eval <new_field_name>=if(con1,val1,if(con2,val2,else))
+ 
+ 
+
+  method = GET ---------- Read
+  method = POST -------- Write
+  else ------------------- Upload
+  
+  CASE ----
+  
+  
+  | eval <new_field_name>=case(case1,val1,case2,val2,case3,val3............default_case,default_value)
+
+
+
+| eval method_status=case(method="GET","Good")
+
+
+index=_internal sourcetype=splunkd_ui_access 
+| stats count by method 
+| eval method_status=case(method="GET","Read",method="POST","Write",1=1,"Upload")
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Macro ----- Shift + Ctrl + E 
+
+
+
+
+
+
+      
+ 
+ 
+ 
+ 

@@ -1,0 +1,137 @@
+
+@ Name 3
+ ayan
+ vijay
+ raja01
+ 
+ 
+# Age 4
+ 45
+ 78
+ 16
+ 56
+ 
+ 
+ failure
+ failed
+ fails 
+ 
+ 
+ 
+ | search fail*
+ 
+ | search NOT failure
+ 
+ NOT OR AND 
+ 
+ 
+
+ 
+ 
+ ayan lives in kolkata
+ sayan lives in mumbai
+ ayan and sayan are friends 
+ raja is from chennai
+ 
+ 
+  | search ayan OR sayan
+  
+ ayan lives in kolkata
+ sayan lives in mumbai
+ ayan and sayan are friends 
+ 
+ 
+  | search ayan AND sayan
+  
+   ayan and sayan are friends 
+   
+   
+   
+   
+   200 - 299
+   
+ > 400
+   
+   
+   
+   300 - 399 will not get 
+   
+   
+   3004
+   
+   will be back at 4 pm
+   
+   
+   | rename <old_field_name> as <new_field_name>
+   
+   
+   | replace <old_field_value> with  <new_field_value> in <field_name>
+   
+   | head 
+   
+   
+   
+   
+a 
+b 
+c 
+d 
+e 
+f 
+g 
+h 
+i 
+j 
+k 
+l 
+
+| tail 
+l 
+k 
+j 
+i 
+
+.....
+
+| head 
+
+a 
+b 
+c 
+d 
+e 
+f 
+g 
+h 
+i 
+j
+
+
+-------------------
+
+num
+45
+78
+90
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ 
+ 

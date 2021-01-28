@@ -1,0 +1,125 @@
+Splunk Architecture ------
+
+<<<<<<<<<< Splunk components <<<<<<<<<
+1) Universal Forwarder ( UF )  ---- Splunk Universal Forwarder Package  --- CLI 
+
+Splunk Enterprise >>>>>>> GUI + CLI 
+
+2) Heavy Forwarder ( HF ) 
+ --- Parsing 
+ --- Filtering 
+ 
+ This is ayan, and he is 39 years old
+ This is sayan, he is 34 years old 
+ 
+ 
+ 
+ 
+  This is ayan
+  
+ and he is 39 years old
+  
+ This is sayan
+
+ he is 34 years old 
+ 
+----------------------- 
+ 
+This is ayan and his account number is 1988998
+This is raj and his account number is 2334567
+ 
+ 
+
+This is ayan and his account number is xxx8998
+This is raj and his account number is xxx4567 
+
+
+----------------------------------------------------------------------------------------
+
+this is ayan and he logged out from 198.78.90.10
+This is subham and logged in from 189.90.78.89
+This is raja and he logged in from 192.168.10.10
+ 
+ 
+ 
+ 
+this is ayan and he logged out from 198.78.90.10 
+
+
+/aws/ec2-5001/.....
+/aws/ec2-5002/....
+
+
+host_segment = 2
+
+
+3) Indexer ( IDX )
+
+------ 
+  ---- os
+  ----- wineventlog
+  ----- aws 
+  
+  -------------------------- 3 Metadata -----
+                                          host - hostname or ip address of the application server ( 198.10.10.1 , apac-linux-dc01 )
+										  source - Actual path of the data ( /tmp/a.txt , C:\Program Files\Windows\a.txt )
+										  sourcetype --
+										          C:\Program Files\Windows\a.txt    ----- txtlog
+												  C:\Program Files\Windows\b.txt
+												  
+												  C:\Program Files\Windows\a.json    ------ jsonlog 
+												  C:\Program Files\Windows\b.json 
+
+
+
+
+4) Search Head ( SH )
+5) Deployment Server ( DS )
+6) License Master ( LM )
+
+License Stacking 
+
+5GB + 10GB = 15 GB + 100GB = 115GB 
+ 
+License Pooling 
+
+Pool A - 90 GB -- IDX ----
+Pool B - 25GB  --- SH , DS 
+
+
+
+
+
+5 times in a rolling period of 30 days --- 
+
+25 Jan --
+26
+27
+1
+15
+16
+
+24th feb
+
+> 5 
+https://splunkonbigdata.com/2020/07/31/splunk-licensing-enforcement-vs-no-enforcement/
+
+
+< 6.5 -- Enforcement License ---  Indexing Continues ---- Searching Blocked 
+
+>= 6.5 --- No-Enforcement License  ---- Indexing Continues ---- Searching Continues -- Splunk can take leagal action 
+
+
+License Master Goes Down --  > 72 hours  ---- Indexing Continues ---- Searching Blocked   
+
+https://splunkonbigdata.com/2018/09/25/what-happens-when-license-master-goes-down/
+
+
+License Expired  ---- Indexing Continues ---- Searching Blocked 
+
+
+
+
+
+
+

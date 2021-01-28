@@ -1,0 +1,26 @@
+Field Extraction------------
+
+>>>>> 1) Index Time Field Extraction 
+      2) Search Time Field Extraction
+	      a) Interactive Field Extractor ( IFX )
+		  b) Regex ( | rex )
+		  
+		  
+		  
+		  student1_date
+		  student1_responsetime
+		  
+		  
+		  
+		  
+----------- Field Aliases ------
+
+srcip=156.89.89.90 uname=ayan     ----- juniper 
+
+source_ip=192.56.10.56 username=raja ------ palo-alto
+
+
+
+index=palo-alto OR index=juniper   | table src
+	       
+ 
